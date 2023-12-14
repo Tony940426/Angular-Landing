@@ -8,6 +8,6 @@ import { ForecastService } from '../forecast.service';
 })
 export class ForecastComponent {
 constructor(forecastService: ForecastService){
-  forecastService.getForcast().subscribe(coords=>{console.log(coords)})
+  forecastService.getForcast().subscribe(weatherResponse=>{console.log(weatherResponse)})
   }
 }
