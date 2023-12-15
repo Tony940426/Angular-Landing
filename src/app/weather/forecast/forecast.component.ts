@@ -7,7 +7,11 @@ import { ForecastService } from '../forecast.service';
   styleUrls: ['./forecast.component.css']
 })
 export class ForecastComponent {
-constructor(forecastService: ForecastService){
-  forecastService.getForcast().subscribe(weatherResponse=>{console.log(weatherResponse)})
+  forcastData: any = [];
+
+  constructor(forecastService: ForecastService){
+    forecastService.getForcast().subscribe(data => {
+      this.forcastData = data;
+    })
   }
 }
