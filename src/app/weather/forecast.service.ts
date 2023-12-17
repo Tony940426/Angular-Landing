@@ -36,7 +36,7 @@ export class ForecastService {
         filter((value, index) => index % 8 === 0),
         map( value => {
           return {
-            dataString: value.dt_txt,
+            dateString: value.dt_txt,
             temp: value.main.temp
           }
         }),
