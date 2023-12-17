@@ -1,4 +1,4 @@
 <p>forecast works!</p>
 <div *ngFor="let forecast of forcastData ">
-    {{forecast.temp}}
+    {{forecast.temp | number: '1.0-2'}}
 </div>
