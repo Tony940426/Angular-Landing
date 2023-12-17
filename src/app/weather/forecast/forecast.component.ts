@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ForecastService } from '../forecast.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-forecast',
@@ -7,11 +8,9 @@ import { ForecastService } from '../forecast.service';
   styleUrls: ['./forecast.component.css']
 })
 export class ForecastComponent {
-  forcastData: any = [];
+  forecastData$: Observable<{ dateString: string; temp: number} []>
 
   constructor(forecastService: ForecastService){
-    forecastService.getForcast().subscribe(data => {
-      this.forcastData = data;
-    })
+    this.forecastData$ = forecastService.getForcast()
   }
 }
