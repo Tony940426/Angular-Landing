@@ -14,7 +14,7 @@ export class NotificationListComponent {
     this.messages = notificationService.messagesOutput;
 
     setInterval(() => {
-      notificationService.addSuccess("It is Working")
+      notificationService.addSuccess("It is a error")
     }, 500)
   }
 
