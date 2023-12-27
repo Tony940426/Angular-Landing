@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpParams, HttpClient } from '@angular/common/http'
 import { Observable, of } from 'rxjs';
 import { map, mergeMap, switchMap, filter, toArray } from 'rxjs/operators';
+import { NotificationsService } from '../notifications/notifications.service';
 
 interface OpenWeatherResponse {
   list: {
@@ -18,7 +19,7 @@ interface OpenWeatherResponse {
 export class ForecastService {
   private url = 'https://api.openweathermap.org/data/2.5/forecast'
 
-  constructor(private http: HttpClient){}
+  constructor(private http: HttpClient, private notificationsService: NotificationsService ){}
 
   getForcast(){
     return this.getCurrentLocation()

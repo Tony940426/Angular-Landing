@@ -8,14 +8,14 @@ import { Observable } from 'rxjs';
   styleUrls: ['./notification-list.component.css']
 })
 export class NotificationListComponent {
-  messages: Observable<Command[]>
+  messages: Observable<Command[]>;
 
-  constructor(notificationService: NotificationsService){
-    this.messages = notificationService.messagesOutput;
+  constructor(private notificationsService: NotificationsService){
+    this.messages = this.notificationsService.messagesOutput;
+  }
 
-    setInterval(() => {
-      notificationService.addSuccess("It is a error")
-    }, 500)
+  clearMessage(id: number){
+    this.notificationsService.clearMessage(id);
   }
 
 }
