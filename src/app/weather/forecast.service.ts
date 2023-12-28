@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpParams, HttpClient } from '@angular/common/http'
-import { Observable, of } from 'rxjs';
-import { map, mergeMap, switchMap, filter, toArray, tap } from 'rxjs/operators';
+import { Observable, of, throwError } from 'rxjs';
+import { map, mergeMap, switchMap, filter, toArray, tap, catchError } from 'rxjs/operators';
 import { NotificationsService } from '../notifications/notifications.service';
 
 interface OpenWeatherResponse {
@@ -57,8 +57,11 @@ export class ForecastService {
     }).pipe(
       tap(() => {
         this.notificationsService.addSuccess('Location Obtained')
-      },(err) => {
-        this.notificationsService.addError('Failed to Get Location')
+      }),
+      catchError((err) => {
+        this.notificationsService.addError('Error Finding Location');
+
+        return throwError(() => new Error(err))
       })
     )
   }
