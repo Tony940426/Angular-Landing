@@ -3,7 +3,7 @@ import { Observable, Subject } from 'rxjs';
 import {tap, map, switchMap, pluck } from  'rxjs/operators'
 import { HttpParams, HttpClient } from '@angular/common/http';
 
-interface Article {
+export interface Article {
   title: string;
   url: string;
 }

@@ -47,7 +47,6 @@ export class ForecastService {
 
   getCurrentLocation(){
     return new Observable<GeolocationCoordinates>((observer) => {
-      console.log('Trying to get location')
       window.navigator.geolocation.getCurrentPosition(
         (position) => {
           observer.next(position.coords);
