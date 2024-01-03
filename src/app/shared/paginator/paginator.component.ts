@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-paginator',
@@ -6,10 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./paginator.component.css']
 })
 export class PaginatorComponent {
-  numberOfPages = 5; //Make sure we receive this value from the parent
-  currentPage = 2;
+  @Input() numberOfPages: number;
+  pageOptions: number[];
 
-  pageOptions: number[] = [];
+  currentPage = 1;
 
   constructor(){
     this.pageOptions = [
