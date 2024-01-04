@@ -19,9 +19,13 @@ export class NaArticleListComponent {
     })
 
     this.newsApiService.numberOfPages.subscribe((pages) => {
-      return this.numberOfPages = pages
+      this.numberOfPages = pages
     })
 
     this.newsApiService.getPage(1);
+  }
+
+  onPageClick(page: number){
+    this.newsApiService.getPage(page);
   }
 } 

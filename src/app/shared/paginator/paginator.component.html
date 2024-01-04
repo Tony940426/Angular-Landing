@@ -4,7 +4,7 @@
         *ngFor="let page of pageOptions"
         [ngClass]="page ===currentPage ? 'active' : ''"
         >
-            <a class="page-link">{{page}}</a>
+            <a class="page-link" (click)="onPageClick(page)">{{page}}</a>
         </li>
     </ul>
 </nav>

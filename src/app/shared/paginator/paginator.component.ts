@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges} from '@angular/core';
+import { Component, Input, Output, OnChanges, SimpleChanges, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-paginator',
@@ -7,6 +7,7 @@ import { Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 })
 export class PaginatorComponent implements OnChanges {
   @Input() numberOfPages: number = 0;
+  @Output() pageClick: EventEmitter<number> = new EventEmitter<number>
   pageOptions: number[] = [];
 
   currentPage = 1;
@@ -27,6 +28,12 @@ export class PaginatorComponent implements OnChanges {
     ].filter(pageNumber => 
       pageNumber >=1 && pageNumber <= this.numberOfPages
     );
-    console.log(this.pageOptions)
+  }
+
+  onPageClick(page: number){
+    this.pageClick.emit(page);
+    this.currentPage = page
+    this.updatePageOptions()
+    console.log(this.currentPage, this.pageOptions)
   }
 }

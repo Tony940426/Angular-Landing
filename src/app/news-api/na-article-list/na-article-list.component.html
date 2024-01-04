@@ -9,4 +9,4 @@
     {{article.title | trimOutletName: article.source.name}}
     </a>
 </div>
-<app-paginator [numberOfPages]="numberOfPages"></app-paginator>
+<app-paginator [numberOfPages]="numberOfPages" (pageClick)="onPageClick($event)"></app-paginator>
