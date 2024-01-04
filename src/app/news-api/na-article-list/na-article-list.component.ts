@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NewsApiService, Article } from '../news-api.service';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-na-article-list',
@@ -8,12 +9,19 @@ import { NewsApiService, Article } from '../news-api.service';
 })
 export class NaArticleListComponent {
   articles: Article[];
+  numberOfPages: number = 1; 
 
   constructor(private newsApiService: NewsApiService){
     this.articles = []
+
     this.newsApiService.pagesOutput.subscribe(articles => {
       this.articles = articles;
     })
+
+    this.newsApiService.numberOfPages.subscribe((pages) => {
+      return this.numberOfPages = pages
+    })
+
     this.newsApiService.getPage(1);
   }
-}
+} 

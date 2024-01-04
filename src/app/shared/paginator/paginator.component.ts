@@ -1,17 +1,23 @@
-import { Component, Input} from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 
 @Component({
   selector: 'app-paginator',
   templateUrl: './paginator.component.html',
   styleUrls: ['./paginator.component.css']
 })
-export class PaginatorComponent {
-  @Input() numberOfPages: number;
-  pageOptions: number[];
+export class PaginatorComponent implements OnChanges {
+  @Input() numberOfPages: number = 0;
+  pageOptions: number[] = [];
 
   currentPage = 1;
 
-  constructor(){
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['numberOfPages']) {
+      this.updatePageOptions();
+    }
+  }
+
+  private updatePageOptions(){
     this.pageOptions = [
       this.currentPage - 2,
       this.currentPage - 1,
@@ -21,6 +27,6 @@ export class PaginatorComponent {
     ].filter(pageNumber => 
       pageNumber >=1 && pageNumber <= this.numberOfPages
     );
+    console.log(this.pageOptions)
   }
-
 }
