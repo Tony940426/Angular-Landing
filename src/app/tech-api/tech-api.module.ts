@@ -10,6 +10,9 @@ import { TechArticleListComponent } from './tech-article-list/tech-article-list.
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    TechArticleListComponent
   ]
 })
 export class TechApiModule { }
