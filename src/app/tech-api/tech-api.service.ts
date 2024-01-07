@@ -20,12 +20,14 @@ export class TechApiService {
   private storyUrl = `${this.baseUrl}item/`
   private storyUrlEnd = '/.json?print=pretty'
   private pageSize = 10;
-  private searchArray: Observable<number[]>
+  searchArray: Observable<number[]>
 
 
   constructor(private http: HttpClient) {
     this.searchArray = this.http.get<number[]>(this.newsStoriesUrl).pipe(
-      map((id) => id)
+      map((id) => {
+        return id.slice(0,50)
+      })
     )
   }
 }
