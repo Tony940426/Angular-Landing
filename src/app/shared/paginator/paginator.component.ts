@@ -32,8 +32,7 @@ export class PaginatorComponent implements OnChanges {
 
   onPageClick(page: number){
     this.pageClick.emit(page);
-    this.currentPage = page
-    this.updatePageOptions()
-    console.log(this.currentPage, this.pageOptions)
+    this.currentPage = page;
+    this.updatePageOptions();
   }
 }
